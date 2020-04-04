@@ -86,6 +86,28 @@ class LinkedList:
         temp2.next = temp.next
         temp = None
 
+    def len_iterative(self):
+        count = 1
+        temp = self.head
+        if temp is None:
+            count = 0
+            print("The linked list is empty.")
+            return
+
+        while temp.next is not None:
+            temp = temp.next
+            count += 1
+
+        print("The length of linked list is :", count)
+
+    def len_recursive(self, head):
+        if head is None:
+            return 0
+        return 1 + self.len_recursive(head.next)
+
+    def return_head(self):
+        return self.head
+
 
 a = LinkedList()
 a.append_val("A")
@@ -97,7 +119,12 @@ a.prepend("F")
 a.prepend("G")
 # a.insert_after_node("G", "G")
 a.print_ll()
+# a.len_iterative()
+p = a.len_recursive(a.return_head())
+print(p)
 a.delete_at_positon(2)
 
 # a.delete_node("A")
 a.print_ll()
+# a.len_iterative()
+print(a.len_recursive(a.head))
