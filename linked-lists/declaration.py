@@ -108,6 +108,65 @@ class LinkedList:
     def return_head(self):
         return self.head
 
+    def swap_nodes(self, key1, key2):
+
+        if key1 == key2:
+            return
+        prev1 = None
+        curr1 = self.head
+
+        while curr1 and curr1.data != key1:
+            prev1 = curr1
+            curr1 = curr1.next
+
+        prev2 = None
+        curr2 = self.head
+
+        while curr2 and curr2.data != key2:
+            prev2 = curr2
+            curr2 = curr2.next
+        if not curr1 or not curr2:
+            return
+
+        if prev1:
+
+            prev1.next = curr2
+
+        else:
+            self.head = curr2
+
+        if prev2:
+            prev2.next = curr1
+        else:
+            self.head = curr1
+
+        curr1.next, curr2.next = curr2.next, curr1.next
+
+    def reverse_iterative(self):
+        prev = None
+        current = self.head
+
+        while current:
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
+
+        self.head = prev
+
+    def reverse_recursive(self):
+
+        def _reverse_recursive(cur, prev):
+            if not cur:
+                return prev
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+            return _reverse_recursive(cur, prev)
+
+        self.head = _reverse_recursive(self.head, None)
+
 
 a = LinkedList()
 a.append_val("A")
@@ -118,13 +177,16 @@ a.prepend("E")
 a.prepend("F")
 a.prepend("G")
 # a.insert_after_node("G", "G")
-a.print_ll()
+# a.print_ll()
 # a.len_iterative()
-p = a.len_recursive(a.return_head())
-print(p)
-a.delete_at_positon(2)
+# p = a.len_recursive(a.return_head())
+# print(p)
+# a.delete_at_positon(2)
 
 # a.delete_node("A")
 a.print_ll()
 # a.len_iterative()
-print(a.len_recursive(a.head))
+# print(a.len_recursive(a.head))
+# a.swap_nodes("F", "G")
+a.reverse_recursive()
+a.print_ll()
