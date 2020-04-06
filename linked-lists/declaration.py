@@ -167,15 +167,72 @@ class LinkedList:
 
         self.head = _reverse_recursive(self.head, None)
 
+    def merge_sorted(self, llist):
 
-a = LinkedList()
-a.append_val("A")
-a.append_val("B")
-a.append_val("C")
-a.append_val("Z")
-a.prepend("E")
-a.prepend("F")
-a.prepend("G")
+        p = self.head
+        q = llist.head
+        s = None
+        new_head = None
+
+        if p is None:
+            return q
+        if q is None:
+            return p
+
+        if p and q:
+            if p.data < q.data:
+                s = p
+                p = s.next
+            else:
+                s = q
+                q = s.next
+            new_head = s
+            self.head = s
+
+        while p and q:
+            if p.data < q.data:
+                s.next = p
+                s = p
+                p = s.next
+            else:
+                s.next = q
+                s = q
+                q = s.next
+
+        if not q:
+            s.next = p
+        if not p:
+            s.next = q
+
+        return new_head
+
+ll1 = LinkedList()
+ll1.append_val(1)
+ll1.append_val(5)
+ll1.append_val(7)
+ll1.append_val(9)
+ll1.print_ll()
+
+ll2 = LinkedList()
+ll2.append_val(2)
+ll2.append_val(3)
+ll2.append_val(6)
+ll2.append_val(8)
+ll2.print_ll()
+
+ll1.merge_sorted(ll2)
+ll1.print_ll()
+
+
+
+# a = LinkedList()
+# a.append_val("A")
+# a.append_val("B")
+# a.append_val("C")
+# a.append_val("Z")
+# a.prepend("E")
+# a.prepend("F")
+# a.prepend("G")
 # a.insert_after_node("G", "G")
 # a.print_ll()
 # a.len_iterative()
@@ -184,9 +241,11 @@ a.prepend("G")
 # a.delete_at_positon(2)
 
 # a.delete_node("A")
-a.print_ll()
+# a.print_ll()
 # a.len_iterative()
 # print(a.len_recursive(a.head))
 # a.swap_nodes("F", "G")
-a.reverse_recursive()
-a.print_ll()
+# a.reverse_recursive()
+# a.print_ll()
+
+
