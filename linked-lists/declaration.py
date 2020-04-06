@@ -206,23 +206,52 @@ class LinkedList:
 
         return new_head
 
-ll1 = LinkedList()
-ll1.append_val(1)
-ll1.append_val(5)
-ll1.append_val(7)
-ll1.append_val(9)
-ll1.print_ll()
+    def remove_duplicates(self):
+        elements = {}
 
-ll2 = LinkedList()
-ll2.append_val(2)
-ll2.append_val(3)
-ll2.append_val(6)
-ll2.append_val(8)
-ll2.print_ll()
+        cur = self.head
+        prev = None
 
-ll1.merge_sorted(ll2)
-ll1.print_ll()
+        while cur:
+            if cur.data in elements:
+                prev.next = cur.next
+                
+            else:
+                elements[cur.data] = 1
+                prev = cur
+            cur = prev.next
 
+
+a = LinkedList()
+a.append_val(1)
+a.append_val(2)
+a.append_val(4)
+a.append_val(1)
+a.append_val(3)
+a.append_val(2)
+
+a.print_ll()
+
+a.remove_duplicates()
+a.print_ll()
+
+
+# ll1 = LinkedList()
+# ll1.append_val(1)
+# ll1.append_val(5)
+# ll1.append_val(7)
+# ll1.append_val(9)
+# ll1.print_ll()
+
+# ll2 = LinkedList()
+# ll2.append_val(2)
+# ll2.append_val(3)
+# ll2.append_val(6)
+# ll2.append_val(8)
+# ll2.print_ll()
+
+# ll1.merge_sorted(ll2)
+# ll1.print_ll()
 
 
 # a = LinkedList()
@@ -247,5 +276,3 @@ ll1.print_ll()
 # a.swap_nodes("F", "G")
 # a.reverse_recursive()
 # a.print_ll()
-
-
