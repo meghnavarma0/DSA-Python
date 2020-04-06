@@ -92,13 +92,15 @@ class LinkedList:
         if temp is None:
             count = 0
             print("The linked list is empty.")
-            return
+            return 0
 
         while temp.next is not None:
             temp = temp.next
             count += 1
+        return count
+        
 
-        print("The length of linked list is :", count)
+        # print("The length of linked list is :", count)
 
     def len_recursive(self, head):
         if head is None:
@@ -222,18 +224,18 @@ class LinkedList:
             cur = prev.next
 
 
-a = LinkedList()
-a.append_val(1)
-a.append_val(2)
-a.append_val(4)
-a.append_val(1)
-a.append_val(3)
-a.append_val(2)
+# a = LinkedList()
+# a.append_val(1)
+# a.append_val(2)
+# a.append_val(4)
+# a.append_val(1)
+# a.append_val(3)
+# a.append_val(2)
 
-a.print_ll()
+# a.print_ll()
 
-a.remove_duplicates()
-a.print_ll()
+# a.remove_duplicates()
+# a.print_ll()
 
 
 # ll1 = LinkedList()
