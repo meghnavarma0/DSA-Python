@@ -2,10 +2,9 @@ import math
 
 
 def subs(n):
-    val = math.ceil(math.sqrt(n))
-    upper = val**2
-    diff = upper - n
-    return math.ceil(math.sqrt(diff)) == math.floor(math.sqrt(diff))
+    if n % 4 == 0 or n % 2 == 1:
+        return True
+    return False
 
 
 def squaredSubsequence(arr, n):
