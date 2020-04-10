@@ -17,9 +17,20 @@ def twoSum(arr, target):
     return False
 
 
+def twoSumUsingDict(arr, target):
+    ht = {}
+    for i in range(len(arr)):
+        if arr[i] in ht:
+            return True
+        else:
+            ht[target - arr[i]] = arr[i]
+    return False
+
+
 t = int(input())
 while t:
     arr = list(map(int, input().split()))
     target = int(input())
     print(twoSum(arr, target))
+    print(twoSumUsingDict(arr, target))
     t -= 1
