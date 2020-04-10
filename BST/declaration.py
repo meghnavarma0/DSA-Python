@@ -99,6 +99,8 @@ class BinaryTree(object):
         return traversal
 
     
+        
+    
 
     def levelorder_traversal(self, start):
         if start is None:
@@ -140,6 +142,34 @@ class BinaryTree(object):
             traversal += str(stack.pop().value) + " "
         
         return traversal
+    
+    def size_of_tree(self):
+        root = self.root
+        if root is None:
+            return 0
+        stack = Stack()
+        stack.push(root)
+        size = 1
+
+        while stack:
+            node = stack.pop()
+            if node.left:
+                stack.push(node.left)
+                size += 1
+            if node.right:
+                stack.push(node.right)
+                size += 1
+        return size
+
+    def size_recursive(self, root):
+        if root is None:
+            return 0
+        return 1 + self.size_recursive(root.left) + self.size_recursive(root.right)
+
+    def height_of_tree(self, root):
+        if root is None:
+            return -1
+        return 1 + max(self.height_of_tree(root.left),self.height_of_tree(root.right))
 
 
 
@@ -158,3 +188,6 @@ tree.print_tree("inorder")
 tree.print_tree("postorder")
 tree.print_tree("levelorder")
 tree.print_tree("reverselevelorder")
+print("SiZE OF TREE: ", tree.size_of_tree())
+print("RECURSIVE SiZE OF TREE: ", tree.size_recursive(tree.root))
+print("HEIGHT OF TREE: ", tree.height_of_tree(tree.root))
