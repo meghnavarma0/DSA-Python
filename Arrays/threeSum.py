@@ -1,10 +1,14 @@
-# Given an array of integers. Find whether a combination of any two numbers sum up to a given target.
-# eg arr = [-2, 1, 3, 5, 6], target = 4 => True
-
-
-def twoSum(arr, target):
+def threeSum(arr, target):
     arr.sort()
     i = 0
+    for i in range(len(arr) - 2):
+        if twoSum(arr, target - arr[i], i + 1):
+            return True
+    return False
+
+
+def twoSum(arr, target, i):
+
     j = len(arr) - 1
     while i < j:
         s = arr[i] + arr[j]
@@ -21,5 +25,5 @@ t = int(input())
 while t:
     arr = list(map(int, input().split()))
     target = int(input())
-    print(twoSum(arr, target))
+    print(threeSum(arr, target))
     t -= 1
