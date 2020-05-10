@@ -1,20 +1,13 @@
-from collections import Counter
-
 t = int(input())
 while t:
-    n = int(input())
-    arr = list(map(int, input().split()))
-    d = Counter(arr)
-    l = len(set(arr))
-    f = 0
-    for i in d:
-        if d[i] > f:
-            f = d[i]
-    if f > l:
-        print(l)
-    elif f == l:
-        print(l - 1)
-    else:
-        print(f)
+    n, k = list(map(int, input().split()))
+
+    extra = k % (n-1)
+    key = k // (n-1)
+    if k % (n-1) == 0:
+        key -= 1
+        extra = n-1
+    result = n * (key) + extra
+    print(result)
 
     t -= 1
