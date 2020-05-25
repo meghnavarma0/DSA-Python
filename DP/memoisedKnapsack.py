@@ -1,4 +1,4 @@
-mem = [[-1 for i in range(w + 1)] for j in range(n + 1)]
+mem = [[-1 for i in range(10 + 1)] for j in range(4 + 1)]
 
 def knapsack(val, wt, w, n):
     
