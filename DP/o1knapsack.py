@@ -1,5 +1,5 @@
 def knapsack(val, wt, w, n):
-
+    
     if w == 0 or n == 0:
         return 0
     if wt[n-1] <= w:
