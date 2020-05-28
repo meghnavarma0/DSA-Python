@@ -3,7 +3,7 @@ def findFloor(arr, x):
     l = 0
     h = len(arr) - 1
     mid = None
-    result = None
+    result = -1
 
     while l <= h:
         mid = (l + h) // 2
@@ -16,7 +16,7 @@ def findFloor(arr, x):
             l = mid + 1
     return result
 
-arr = [1, 2, 4, 7, 9, 13, 18, 20]
+arr = [2, 4, 7, 9, 13, 18, 20]
 for i in range(int(input("Enter no. of test cases : "))):
     n = int(input("Enter no."))
     print("Floor : ", findFloor(arr, n))
