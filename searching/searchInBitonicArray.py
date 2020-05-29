@@ -26,7 +26,7 @@ def findPeak(arr):
             else:
                 return n - 2
 
-def binarySearch(arr, x, low, high):
+def binarySearchAscending(arr, x, low, high):
     # low = 0
     # high = len(arr) - 1
     while low <= high:
@@ -40,11 +40,25 @@ def binarySearch(arr, x, low, high):
 
     return -1
 
+def binarySearchDescending(arr, x, low, high):
+    # low = 0
+    # high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == x:
+            return mid
+        elif x < arr[mid]:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return -1
+
 def findBitonic(arr, x):
     n = len(arr)
     p = findPeak(arr)
-    a = binarySearch(arr, x, 0, p)
-    b = binarySearch(arr, x, p, n-1)
+    a = binarySearchAscending(arr, x, 0, p)
+    b = binarySearchDescending(arr, x, p, n-1)
     if(a != -1):
         print(a)
     elif b != -1:
@@ -52,7 +66,9 @@ def findBitonic(arr, x):
     else:
         print("ELEMENT NOT FOUND")
 
-arr = [1, 2, 5, 9, 7, 4]
+arr = [1, 2, 5, 10, 9, 8, 7, 4]
 findBitonic(arr,10)
 findBitonic(arr,1)
 findBitonic(arr,9)
+findBitonic(arr,4)
+findBitonic(arr,8)
