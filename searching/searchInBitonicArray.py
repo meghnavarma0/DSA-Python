@@ -57,7 +57,7 @@ def binarySearchDescending(arr, x, low, high):
 def findBitonic(arr, x):
     n = len(arr)
     p = findPeak(arr)
-    a = binarySearchAscending(arr, x, 0, p)
+    a = binarySearchAscending(arr, x, 0, p - 1)
     b = binarySearchDescending(arr, x, p, n-1)
     if(a != -1):
         print(a)
