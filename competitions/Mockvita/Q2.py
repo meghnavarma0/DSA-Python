@@ -1,5 +1,6 @@
+import math
 def isPrime(n):
-    for i in range(2, int(pow(n, 0.5) + 1)):
+    for i in range(2, n):
         if n % i == 0:
             return False
     return True
@@ -46,7 +47,10 @@ b3 = max(res)
 l = len(res)
 
 def nthFibonacci(a, b, l):
-    s = 0
+    if l == 1:
+      return a
+    if l == 2:
+      return b
     for i in range(l-2):
         s = a + b
         a = b
