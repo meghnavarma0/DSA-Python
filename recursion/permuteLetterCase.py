@@ -1,4 +1,6 @@
 # Given a string, permute the case of all letter in the string.
+# a1B2 -->
+# a1b2 a1B2 A1b2 A1B2
 
 def solve(ip, op, result):
 
