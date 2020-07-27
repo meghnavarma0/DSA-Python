@@ -3,39 +3,44 @@
 
 
 
-n = 4
-maze = [ [1, 0, 0, 0], 
-         [1, 1, 0, 1], 
-         [0, 1, 0, 0], 
-         [1, 1, 1, 1] ] 
-arr = [[0 for i in range(n)] for j in range(n)]
 
-def printMatrix():
+
+def printMatrix(arr):
     for i in range(n):
         for j in range(n):
             print(arr[i][j], end=" ")
         print()
 
-def isSafe(x, y):
+def isSafe(x, y, maze):
     if x >= 0 and y >= 0 and x < n and y < n and maze[x][y] == 1:
         return True
     return False
 
-def solve(x, y):
+def solve(x, y, arr, maze):
     if x == n-1 and y == n-1 and maze[x][y] == 1:
-        printMatrix()
+        printMatrix(arr)
         return True
 
-    if isSafe(x, y):
+    if isSafe(x, y, maze):
         arr[x][y] = 1
-        if solve(x+1, y):
+        if solve(x+1, y, arr, maze):
             return True
     
-        if solve(x, y+1):
+        if solve(x, y+1, arr, maze):
             return True
         arr[x][y] = 0
     
     return False
 
-solve(0, 0)
+
+
+if __name__ == "__main__":
+    n = 4
+    maze = [ [1, 0, 0, 0], 
+            [1, 1, 0, 1], 
+            [0, 1, 0, 0], 
+            [1, 1, 1, 1] ] 
+    arr = [[0 for i in range(n)] for j in range(n)]
+    if not solve(0, 0, arr, maze):
+        print("NOT POSSIBLE")
 
