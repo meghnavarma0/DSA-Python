@@ -1,3 +1,5 @@
+# Not a working solution
+
 n = 8
 def printMatrix(arr, n):
     for i in range(n):
@@ -11,7 +13,7 @@ def isSafe(arr, x, y):
     return False
 
 def solve(arr, pos, n, curr_x, curr_y, move_x, move_y):
-    print("a")
+    
     if pos == n**2:
         return True
     for i in range(n):

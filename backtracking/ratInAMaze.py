@@ -1,10 +1,5 @@
 # In a boolean matrix, you have to reach from the first to the last block by moving along 1's.If possible, print the solution matrix, else print "NOT POSSIBLE"
 
-
-
-
-
-
 def printMatrix(arr):
     for i in range(n):
         for j in range(n):
